@@ -1,0 +1,238 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 16px;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    background-color: #000000;
+}
+
+h1 {
+    color: floralwhite;
+}
+
+select,
+input[type="text"],
+button {
+    font: inherit;
+    padding: 8px;
+}
+
+select,
+input[type="text"] {
+    box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.947);
+    border-radius: 4px;
+    padding: 16px;
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 400px;
+    margin-inline: auto;
+    /* align-items: ; */
+}
+
+.duration-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: floralwhite;
+    font-weight: bolder;
+}
+
+#duration {
+    flex-grow: 1;
+}
+
+input[type="range"] {
+    accent-color: coral;
+    /* -webkit-appearance: none; */
+}
+
+a {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    border: 2px solid #fefefe;
+    text-transform: uppercase;
+    color: #fefefe;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+a::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% - 12px);
+    background-color: #000000;
+    transition: 0.3s ease-in-out;
+    transform: scaleY(1);
+}
+
+a:hover::before {
+    transform: scaleY(0);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: -2px;
+    height: calc(100% + 4px);
+    width: calc(100% - 12px);
+    background-color: #000000;
+    transition: 0.3s ease-in-out;
+    transform: scaleX(1);
+    transition-delay: 0.5s;
+}
+
+a:hover::after {
+    transform: scaleX(0);
+}
+
+a span {
+    position: relative;
+    z-index: 3;
+}
+
+button {
+    background-color: none;
+    text-decoration: none;
+    background-color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
+/* button:hover {
+    color: coral;
+} */
+
+.toast {
+    padding: 0.5em;
+    color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+    animation: fromLeft 0.1s ease-in;
+}
+
+.toasts-container.right .toast {
+    animation: fromRight 0.1s ease-in;
+}
+
+.toast.go-left {
+    animation: toLeft 0.1s ease-in forwards;
+}
+
+.toasts-container.right .toast.go-right {
+    animation: toRight 0.1s ease-in forwards;
+}
+
+@keyframes fromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes toLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes fromRight {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes toRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.toast.success {
+    background-color: #009600;
+}
+
+.toast.error {
+    background-color: #ff0000;
+}
+
+.toast.warning {
+    background-color: #ec6b03;
+}
+
+.toast.info {
+    background-color: #4e4e4e;
+}
+
+.toast.success::before {
+    content: '✓';
+}
+
+.toast.error::before {
+    content: '✗';
+}
+
+.toast.warning::before {
+    content: '⚠';
+}
+
+.toast.info::before {
+    content: 'ⓘ';
+}
+
+.toast span {
+    cursor: pointer;
+}
+
+.toasts-container {
+    position: absolute;
+    top: 1rem;
+    left: 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+    padding: 0 1rem;
+}
+
+.toasts-container.right {
+    left: auto;
+    right: 0rem;
+}
+
+.toasts-container.bottom {
+    top: auto;
+    bottom: 1rem;
+}
